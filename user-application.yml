@@ -1,6 +1,6 @@
 token:
   expire: 86400000
-  secret: my_over_forty_length_of_letters_for_secret_message
+  secret: my_over_forty_length_of_letters_for_secret_messages
 
 gateway:
   ip: 192.168.56.1
