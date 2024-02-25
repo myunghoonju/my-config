@@ -1,6 +1,12 @@
 token:
   expire: 86400000
-  secret: my_over_forty_length_of_letters_for_secret_message
+  secret: '{cipher}7bc4cec7a798704565e81cad4205964846ad3ccab3c2a664b12dade6a18caeaf3a7088fdcae8360e736ef5e3993382b2ddc37dde2feeb610b198c34177afc38c3f544e7411ce44e6565a9104d7a9aae6'
 
 gateway:
   ip: 192.168.56.1
+
+spring:
+    datasource:
+    hikari:
+      jdbc-url: '{cipher}5a73e612b8e29105f2479ec7e4cf65819fabec9e4c025c1be4c5b05414b783676117cc686e0417732df01576bdf106758f08ccb02dcef442e9dde76a9f61a194'
+    driver-class-name: '{cipher}8319598d5ae5b292ce68c199435be2d525a88ac0000058040973d0037b586798'
