@@ -1,3 +1,5 @@
+env: dev
+
 token:
   expire: 86400000
   secret: '{cipher}7bc4cec7a798704565e81cad4205964846ad3ccab3c2a664b12dade6a18caeaf3a7088fdcae8360e736ef5e3993382b2ddc37dde2feeb610b198c34177afc38c3f544e7411ce44e6565a9104d7a9aae6'
