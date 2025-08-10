@@ -2,6 +2,8 @@ server:
   port: 8888
 
 spring:
+  profiles:
+    include: jdbc
   application:
     name: config-service
   rabbitmq:
@@ -9,11 +11,16 @@ spring:
     port: 5672
     username: guest
     password: guest
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: local_rdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/myunghoonju/my-config
+          jdbc:
+            sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
 
 management:
   endpoints:
