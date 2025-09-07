@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    include: jdbc
+    include: dev
   application:
     name: config-service
   rabbitmq:
@@ -19,8 +19,10 @@ spring:
   cloud:
     config:
       server:
-          jdbc:
+        jdbc:
             sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
+        #when it's false then return 404 response if unknown server configuration data requested
+        accept-empty: true
 
 management:
   endpoints:
