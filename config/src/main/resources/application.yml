@@ -11,14 +11,16 @@ spring:
         composite:
           -
             type: git
-            uri: https://github.com/myunghoonju/my-config.git
-            search-path:
-              - {application}
+            uri: https://github.com/myunghoonju/my-config
+            search-paths:
+              - gateway
+              - test 
+              - user
             order: 1
           -
             type: jdbc
             sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
-            order: 3
+            order: 2
         fail-on-composite-error: false
   #        when it's false then return 404 response if unknown server configuration data requested
   #        accept-empty: true
