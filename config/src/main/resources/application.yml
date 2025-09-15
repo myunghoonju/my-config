@@ -12,12 +12,9 @@ spring:
           -
             type: git
             uri: https://github.com/myunghoonju/my-config.git
-            search-path: '\gateway'
+            search-path:
+              - {application}
             order: 1
-          - type: git
-            uri: https://github.com/myunghoonju/my-config.git
-            search-path: '\test'
-            order: 2
           -
             type: jdbc
             sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
