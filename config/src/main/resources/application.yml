@@ -14,7 +14,7 @@ spring:
             uri: https://github.com/myunghoonju/my-config
             search-paths:
               - gateway
-              - test 
+              - test
               - user
             order: 1
           -
