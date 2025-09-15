@@ -1,28 +1,40 @@
 server:
-  port: 8888
-
+  port: 9999
 spring:
   profiles:
-    include: dev
+    active: composite
   application:
-    name: config-service
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    name: config-server
+  cloud:
+    config:
+      server:
+        composite:
+          -
+            type: git
+            uri: https://github.com/myunghoonju/my-config.git
+            search-path: '\gateway'
+            order: 1
+          - type: git
+            uri: https://github.com/myunghoonju/my-config.git
+            search-path: '\test'
+            order: 2
+          -
+            type: jdbc
+            sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
+            order: 3
+        fail-on-composite-error: false
+  #        when it's false then return 404 response if unknown server configuration data requested
+  #        accept-empty: true
   datasource:
     url: jdbc:mysql://localhost:3306/cloud?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: local_rdb
     driver-class-name: com.mysql.cj.jdbc.Driver
-  cloud:
-    config:
-      server:
-        jdbc:
-            sql: select prob_key, prob_val from properties where application=? and profile=? and label=?
-        #when it's false then return 404 response if unknown server configuration data requested
-        accept-empty: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 management:
   endpoints:
